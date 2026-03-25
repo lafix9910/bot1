@@ -37,8 +37,9 @@ class Booking(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, nullable=False)
     username = Column(String(100))
-    full_name = Column(String(100))
+    name = Column(String(100))
     phone = Column(String(20))
+    comment = Column(Text)
     
     service_id = Column(Integer, ForeignKey("services.id"))
     master_id = Column(Integer, ForeignKey("masters.id"))
@@ -47,7 +48,6 @@ class Booking(Base):
     time = Column(Time, nullable=False)
     
     status = Column(String(20), default="pending")
-    notes = Column(Text)
     
     created_at = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
